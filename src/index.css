@@ -1,9 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&family=Noto+Serif+KR:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&family=Noto+Serif+KR:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&family=Nanum+Brush+Script&display=swap');
 @import "tailwindcss";
 
 @theme {
   --font-sans: "Montserrat", "Noto Sans KR", ui-sans-serif, system-ui, sans-serif;
   --font-serif: "Playfair Display", "Noto Serif KR", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-geometric: "Space Grotesk", sans-serif;
+  --font-brand: "Outfit", sans-serif;
+  --font-handwriting: "Nanum Brush Script", cursive;
 
   --color-midnight: #0B1120;
   --color-midnight-light: #162032;

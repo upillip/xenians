@@ -8,14 +8,7 @@ export default function Portfolio() {
       category: "M&A Advisory",
       title: "Project Alpha",
       desc: "Mid-scale Hotel M&A Transaction in Seoul",
-      image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=2070&auto=format&fit=crop"
-    },
-    {
-      id: 2,
-      category: "Hotel Management",
-      title: "The Grand Vista",
-      desc: "Premium Resort Turnaround & Operation Strategy",
-      image: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?q=80&w=2070&auto=format&fit=crop"
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop"
     },
     {
       id: 3,
@@ -23,6 +16,13 @@ export default function Portfolio() {
       title: "Nexus Commercial Complex",
       desc: "Development Planning & Risk Management",
       image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop"
+    },
+    {
+      id: 2,
+      category: "Hotel, Resort & Golf Club Management",
+      title: "The Grand Vista",
+      desc: "Premium Resort Turnaround & Operation Strategy",
+      image: "https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=2070&auto=format&fit=crop"
     }
   ];
 

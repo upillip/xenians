@@ -1,10 +1,11 @@
 import { motion } from 'motion/react';
 import { Mail } from 'lucide-react';
+import logoImage from '../assets/images/logo.png';
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-24 md:py-32 bg-white">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
+    <section id="contact" className="py-24 md:py-32 bg-white relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
           
           <motion.div
@@ -12,7 +13,11 @@ export default function Contact() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
+            className="relative"
           >
+            <div className="absolute -left-12 -top-12 w-64 h-64 opacity-5 blur-sm pointer-events-none select-none">
+              <img src={logoImage} alt="" className="w-full h-full object-contain" />
+            </div>
             <span className="text-gold uppercase tracking-widest text-sm font-semibold mb-4 block">
               Contact Us
             </span>
@@ -23,16 +28,6 @@ export default function Contact() {
               최고의 전략과 압도적인 실행력을 경험하고 싶으시다면, <br className="hidden md:block" />
               전문 상담을 신청해 주십시오. 
             </p>
-
-            <div className="space-y-8">
-              <div className="flex items-start space-x-4">
-                <Mail className="text-gold flex-shrink-0 mt-1" size={24} />
-                <div>
-                  <h4 className="font-bold text-midnight mb-1 uppercase tracking-wider text-sm">Email</h4>
-                  <p className="text-gray-600">help@xenians.com</p>
-                </div>
-              </div>
-            </div>
           </motion.div>
 
           <motion.div

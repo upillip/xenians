@@ -5,6 +5,7 @@ import Hero from './components/Hero';
 import AboutCompany from './components/AboutCompany';
 import Advisory from './components/Advisory';
 import Hospitality from './components/Hospitality';
+import StrategyPlanning from './components/StrategyPlanning';
 import Portfolio from './components/Portfolio';
 import ClientPortal from './components/ClientPortal';
 import Contact from './components/Contact';
@@ -42,6 +43,7 @@ export default function App() {
             <Route path="/" element={<Hero />} />
             <Route path="/about" element={<AboutCompany />} />
             <Route path="/advisory" element={<Advisory />} />
+            <Route path="/strategy" element={<StrategyPlanning />} />
             <Route path="/hospitality" element={<Hospitality />} />
             <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/client-portal" element={<ClientPortal />} />

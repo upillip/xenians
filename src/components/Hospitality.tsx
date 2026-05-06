@@ -5,7 +5,7 @@ export default function Hospitality() {
   const points = [
     {
       title: "Operation & Management",
-      desc: "체계적인 위탁 운영 모델로 호텔의 일상적 운영부터 전략적 결정까지 책임집니다."
+      desc: "체계적인 위탁 운영 모델로 호텔, 리조트, 골프클럽의 일상적 운영부터 전략적 결정까지 책임집니다."
     },
     {
       title: "Asset Management",
@@ -48,8 +48,8 @@ export default function Hospitality() {
             <p className="text-gray-300 mb-8 leading-relaxed text-lg">
               XENIANS는 현장의 성공을 만드는 Operator입니다. <br className="hidden md:block" />
               최고의 환대(Hospitality)는 철저하게 계산된 운영의 결과물입니다. 
-              우리의 위탁 운영 노하우는 비용 최적화와 마케팅 전략을 통합하여 
-              호텔을 가장 가치 높은 자본으로 탈바꿈시킵니다.
+              우리의 위탁 운영 노하우는 호텔, 리조트, 골프클럽의 비용 최적화와 마케팅 전략을 통합하여 
+              해당 자산을 가장 가치 높은 자산으로 탈바꿈시킵니다.
             </p>
 
             <ul className="space-y-6">

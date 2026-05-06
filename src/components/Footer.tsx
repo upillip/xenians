@@ -8,9 +8,9 @@ export default function Footer() {
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center space-x-3 mb-6">
               <img src={logoImage} alt="Logo" className="w-10 h-10 object-contain bg-white rounded-full p-1" />
-              <span className="font-serif font-bold text-3xl tracking-widest uppercase text-gold">Xenians</span>
+              <span className="font-brand font-medium text-3xl tracking-tight text-gold">XENIANS</span>
             </div>
-            <p className="text-gray-400 text-sm max-w-sm leading-relaxed">
+            <p className="text-gray-400 text-sm max-w-sm leading-relaxed font-geometric">
               XENIANS: Where Capital Strategy Meets Operational Excellence. <br />
               정교한 데이터와 압도적인 전문성으로 자산 가치를 재정의합니다.
             </p>

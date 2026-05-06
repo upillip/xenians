@@ -31,38 +31,39 @@ export default function AboutCompany() {
 
   const orgData = [
     {
-      title: "M&A & Advisory 본부",
+      title: "M&A & Advisory Division",
       subtitle: "자문부문",
       teams: [
-        { name: "Deal Sourcing", desc: "인수/매각 대상 발굴, 시장 리서치, 네트워크 확장." },
-        { name: "Execution", desc: "가치평가(Valuation), 실사 조율, 계약 조건 협상." },
-        { name: "Advisory", desc: "전략적 자문, 구조 설계, 법률/회계 자문사 협업 관리." }
+        { name: "Deal Sourcing", enDesc: "Deal Sourcing, Market Research, Network Expansion.", koDesc: "인수/매각 대상 발굴, 시장 리서치, 네트워크 확장." },
+        { name: "Execution", enDesc: "Valuation, Due Diligence Coordination, Negotiation of Contract Terms.", koDesc: "가치평가(Valuation), 실사 조율, 계약 조건 협상." },
+        { name: "Advisory", enDesc: "Strategic Advisory, Deal Structuring, Legal/Accounting Advisory Management.", koDesc: "전략적 자문, 구조 설계, 법률/회계 자문사 협업 관리." }
       ]
     },
     {
-      title: "PM & Strategy 본부",
+      title: "Strategy Planning Division",
       subtitle: "관리부문",
       teams: [
-        { name: "Project Management", desc: "인수 후 통합(PMI) 관리, 사업 리스크 통제, 프로세스 최적화." },
-        { name: "Strategic Planning", desc: "중장기 성장 전략, 자산 포트폴리오 분석." }
+        { name: "Project Management", enDesc: "PMI Management, Business Risk Control, Process Optimization.", koDesc: "통합(PMI) 관리, 사업 리스크 통제, 프로세스 최적화." },
+        { name: "Strategic Planning", enDesc: "Mid-to-long-term Growth Strategy, Asset Portfolio Analysis.", koDesc: "중장기 성장 전략, 자산 포트폴리오 분석." },
+        { name: "Construction PM & PF", enDesc: "Full-cycle Construction Management (Planning to Operation) and PF Advisory.", koDesc: "건설사업 전 과정(계획~운영) 총괄 관리 및 PF(Project Financing) 자문" }
       ]
     },
     {
-      title: "Hospitality 본부",
-      subtitle: "호텔 위탁운영부문",
+      title: "Hospitality Division",
+      subtitle: "위탁운영부문",
       teams: [
-        { name: "Operations", desc: "호텔 현장 관리, 서비스 퀄리티 컨트롤(QC), 인력 채용 및 교육." },
-        { name: "Revenue Management", desc: "판매 전략, 단가 최적화, 예약 채널 관리(OTA), 마케팅." },
-        { name: "Asset Management", desc: "시설 유지보수, 수익률 분석, 개보수(Renovation) 기획." }
+        { name: "Operations", enDesc: "Hotel, Resort & Golf Club Management, Service QC, Recruitment & Training.", koDesc: "호텔/리조트/골프클럽 현장 관리, 서비스 퀄리티 컨트롤(QC), 인력 채용 및 교육." },
+        { name: "Revenue Management", enDesc: "Sales Strategy, Pricing Optimization, OTA Channel Management, Marketing.", koDesc: "판매 전략, 단가 최적화, 예약 채널 관리(OTA), 마케팅." },
+        { name: "Asset Management", enDesc: "Facility Maintenance, Profitability Analysis, Renovation Planning.", koDesc: "시설 유지보수, 수익률 분석, 개보수(Renovation) 기획." }
       ]
     },
     {
-      title: "경영지원실",
-      subtitle: "Back Office",
+      title: "Corporate Support Division",
+      subtitle: "경영지원부문",
       teams: [
-        { name: "Compliance & Legal", desc: "법규 준수, 계약서 검토, 보안 관리." },
-        { name: "Finance & HR", desc: "재무 관리, 인사, 총무." },
-        { name: "IT & Data Room", desc: "클라이언트 전용 로그인 시스템(VDR) 및 보안 서버 관리." }
+        { name: "Compliance & Legal", enDesc: "Regulatory Compliance, Contract Review, Security Management.", koDesc: "법규 준수, 계약서 검토, 보안 관리." },
+        { name: "Finance & HR", enDesc: "Financial Management, HR, General Affairs.", koDesc: "재무 관리, 인사, 총무." },
+        { name: "IT & Data Room", enDesc: "Client VDR & Secure Server Management.", koDesc: "클라이언트 전용 로그인 시스템(VDR) 및 보안 서버 관리." }
       ]
     }
   ];
@@ -140,19 +141,19 @@ export default function AboutCompany() {
                           <span>{t.quote2}</span>"
                         </h2>
                         
-                        <div className="space-y-6 text-gray-600 font-light leading-relaxed">
+                        <div className="space-y-6 text-gray-700 font-handwriting text-2xl leading-relaxed">
                           <p>{t.p1}</p>
                           <p>{t.p2}</p>
                           <p>{t.p3}</p>
                           <p>{t.p4}</p>
                           <div className="pt-4 flex items-center space-x-4">
-                            <p className="font-medium text-midnight text-lg">
+                            <p className="font-handwriting text-midnight text-3xl">
                               {t.sign}
                             </p>
                             <img 
                               src={signatureImage} 
                               alt="Signature" 
-                              className="h-16 object-contain -ml-2" 
+                              className="h-16 object-contain -ml-2 opacity-80" 
                             />
                           </div>
                         </div>
@@ -194,22 +195,30 @@ export default function AboutCompany() {
               
               {/* Executive */}
               <div className="flex flex-col items-center mb-10 relative">
-                <div className="w-full max-w-3xl bg-midnight text-white p-8 rounded-sm shadow-xl z-20 border border-midnight-light">
+                <div className="w-full max-w-2xl bg-midnight text-white p-8 rounded-sm shadow-xl z-20 border border-midnight-light">
                   <h3 className="text-xl font-serif mb-8 text-center text-gold">경영진 (Executive)</h3>
-                  <div className="grid md:grid-cols-2 gap-8 md:gap-12">
-                    <div>
-                      <h4 className="font-sans font-medium mb-3 border-b border-white/20 pb-3 text-lg flex items-center">
+                  <div className="flex flex-col space-y-10 items-center">
+                    <div className="w-full max-w-lg">
+                      <h4 className="font-sans font-medium mb-3 border-b border-white/20 pb-3 text-lg flex items-center justify-center">
                         <span className="w-1.5 h-1.5 bg-gold mr-3"></span>
                         CEO (대표이사)
                       </h4>
-                      <p className="text-gray-300 text-sm leading-relaxed pl-4">전사 전략 수립, 핵심 네트워크 관리 및 주요 딜 승인.</p>
+                      <div className="text-center">
+                        <p className="text-gold/80 text-[13px] font-medium uppercase tracking-wider mb-2">Corporate Strategy, Key Network Management, Approval of Major Deals.</p>
+                        <p className="text-white text-base leading-relaxed">전사 전략 수립, 핵심 네트워크 관리 및 주요 딜 승인.</p>
+                      </div>
                     </div>
-                    <div>
-                      <h4 className="font-sans font-medium mb-3 border-b border-white/20 pb-3 text-lg flex items-center">
+                    {/* Intermediate line */}
+                    <div className="h-8 w-px bg-gold/50"></div>
+                    <div className="w-full max-w-lg">
+                      <h4 className="font-sans font-medium mb-3 border-b border-white/20 pb-3 text-lg flex items-center justify-center">
                         <span className="w-1.5 h-1.5 bg-gold mr-3"></span>
-                        Managing Director <br className="hidden md:block" />(본부장/파트너)
+                        Managing Director (본부장/파트너)
                       </h4>
-                      <p className="text-gray-300 text-sm leading-relaxed pl-4">부문별 총괄 및 신규 프로젝트 수주(Pitching).</p>
+                      <div className="text-center">
+                        <p className="text-gold/80 text-[13px] font-medium uppercase tracking-wider mb-2">Division Oversight, New Project Pitching & Acquisition.</p>
+                        <p className="text-white text-base leading-relaxed">부문별 총괄 및 신규 프로젝트 수주(Pitching).</p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -245,9 +254,14 @@ export default function AboutCompany() {
                             <span className="w-1 h-1 rounded-full bg-gold mr-3 mt-2 shrink-0"></span>
                             <span>{team.name}</span>
                           </h4>
-                          <p className="text-[13px] text-gray-500 leading-relaxed pl-4">
-                            {team.desc}
-                          </p>
+                          <div className="pl-4">
+                            <p className="text-[11px] text-gray-400 font-medium uppercase tracking-wider mb-1">
+                              {team.enDesc}
+                            </p>
+                            <p className="text-[14px] text-midnight leading-relaxed font-medium">
+                              {team.koDesc}
+                            </p>
+                          </div>
                         </div>
                       ))}
                     </div>
