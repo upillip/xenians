@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&family=Noto+Serif+KR:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Montserrat", "Noto Sans KR", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", "Noto Serif KR", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+
+  --color-midnight: #0B1120;
+  --color-midnight-light: #162032;
+  --color-gold: #C5A059;
+  --color-gold-light: #D4B67A;
+  --color-taupe: #8B8579;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply font-sans antialiased bg-gray-50 text-midnight;
+  }
+}
