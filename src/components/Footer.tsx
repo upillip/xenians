@@ -1,4 +1,5 @@
 import logoImage from '../assets/images/logo.png';
+import { Link } from 'react-router-dom';
 
 export default function Footer() {
   return (
@@ -19,20 +20,20 @@ export default function Footer() {
           <div>
             <h4 className="text-gold font-bold tracking-wider text-xs uppercase mb-6">Services</h4>
             <ul className="space-y-3 text-sm text-gray-400">
-              <li><a href="#advisory" className="hover:text-white transition-colors">M&A Advisory</a></li>
-              <li><a href="#advisory" className="hover:text-white transition-colors">Project Management</a></li>
-              <li><a href="#hospitality" className="hover:text-white transition-colors">Hotel Management</a></li>
-              <li><a href="#hospitality" className="hover:text-white transition-colors">Asset Management</a></li>
+              <li><Link to="/advisory" className="hover:text-white transition-colors">M&A Advisory</Link></li>
+              <li><Link to="/advisory" className="hover:text-white transition-colors">Project Management</Link></li>
+              <li><Link to="/hospitality" className="hover:text-white transition-colors">Hotel Management</Link></li>
+              <li><Link to="/hospitality" className="hover:text-white transition-colors">Asset Management</Link></li>
             </ul>
           </div>
           
           <div>
             <h4 className="text-gold font-bold tracking-wider text-xs uppercase mb-6">Company</h4>
             <ul className="space-y-3 text-sm text-gray-400">
-              <li><a href="#" className="hover:text-white transition-colors">About Us</a></li>
-              <li><a href="#portfolio" className="hover:text-white transition-colors">Portfolio</a></li>
-              <li><a href="#client-portal" className="hover:text-white transition-colors">Client Portal</a></li>
-              <li><a href="#contact" className="hover:text-white transition-colors">Contact</a></li>
+              <li><Link to="/about" className="hover:text-white transition-colors">About Us</Link></li>
+              <li><Link to="/portfolio" className="hover:text-white transition-colors">Portfolio</Link></li>
+              <li><Link to="/client-portal" className="hover:text-white transition-colors">Client Portal</Link></li>
+              <li><Link to="/contact" className="hover:text-white transition-colors">Contact</Link></li>
             </ul>
           </div>
         </div>
@@ -40,8 +41,8 @@ export default function Footer() {
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
           <p>&copy; 2019 XENIANS. All rights reserved.</p>
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+            <Link to="/" className="hover:text-white transition-colors">Privacy Policy</Link>
+            <Link to="/" className="hover:text-white transition-colors">Terms of Service</Link>
           </div>
         </div>
       </div>

@@ -63,13 +63,13 @@ export default function Navbar() {
               {link.subLinks && (
                 <div className="absolute top-full left-0 mt-2 w-48 bg-white text-midnight shadow-lg border-t-2 border-gold opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
                   {link.subLinks.map(subLink => (
-                    <a
+                    <Link
                       key={subLink.name}
-                      href={subLink.href}
+                      to={subLink.href}
                       className="block px-4 py-3 hover:bg-gray-50 hover:text-gold transition-colors duration-200 text-sm font-sans"
                     >
                       {subLink.name}
-                    </a>
+                    </Link>
                   ))}
                 </div>
               )}
@@ -103,14 +103,14 @@ export default function Navbar() {
               {link.subLinks && (
                 <div className="flex flex-col items-center space-y-3 mt-2">
                   {link.subLinks.map((subLink) => (
-                    <a
+                    <Link
                       key={subLink.name}
-                      href={subLink.href}
+                      to={subLink.href}
                       onClick={() => setMobileMenuOpen(false)}
                       className="font-sans text-lg text-gray-300 hover:text-gold transition-colors duration-200"
                     >
                       - {subLink.name}
-                    </a>
+                    </Link>
                   ))}
                 </div>
               )}

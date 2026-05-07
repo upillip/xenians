@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { ChevronDown } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export default function Hero() {
   return (
@@ -28,18 +29,18 @@ export default function Hero() {
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
-            <a 
-              href="#advisory"
+            <Link 
+              to="/advisory"
               className="w-full sm:w-auto px-8 py-4 bg-gold text-midnight font-bold tracking-widest text-sm hover:bg-gold-light transition-colors duration-300"
             >
               EXPERTISE
-            </a>
-            <a 
-              href="#contact"
+            </Link>
+            <Link 
+              to="/contact"
               className="w-full sm:w-auto px-8 py-4 border border-white/30 text-white font-bold tracking-widest text-sm hover:border-white transition-colors duration-300"
             >
               CONTACT US
-            </a>
+            </Link>
           </div>
         </motion.div>
       </div>
