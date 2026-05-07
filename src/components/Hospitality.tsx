@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { Key, Users, TrendingUp, Building } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export default function Hospitality() {
   const points = [
@@ -73,7 +74,6 @@ export default function Hospitality() {
               ))}
             </ul>
           </motion.div>
-
         </div>
       </div>
     </section>

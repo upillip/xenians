@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { ArrowRight, Lock } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export default function Portfolio() {
   const projects = [
@@ -45,18 +46,21 @@ export default function Portfolio() {
             </h2>
           </motion.div>
           
-          <motion.a 
-            href="#client-portal"
+          <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="mt-6 md:mt-0 flex items-center space-x-2 text-midnight font-bold group hover:text-gold transition-colors duration-200"
           >
-            <Lock size={16} />
-            <span className="tracking-widest uppercase text-sm border-b border-midnight group-hover:border-gold pb-1">View Full Private Records</span>
-            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-          </motion.a>
+            <Link 
+              to="/client-portal"
+              className="mt-6 md:mt-0 flex items-center space-x-2 text-midnight font-bold group hover:text-gold transition-colors duration-200"
+            >
+              <Lock size={16} />
+              <span className="tracking-widest uppercase text-sm border-b border-midnight group-hover:border-gold pb-1">View Full Private Records</span>
+              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </motion.div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -86,7 +90,6 @@ export default function Portfolio() {
             </motion.div>
           ))}
         </div>
-
       </div>
     </section>
   );

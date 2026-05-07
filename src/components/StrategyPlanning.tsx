@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { Shield, TrendingUp, Construction } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export default function StrategyPlanning() {
   const highlights = [
@@ -102,12 +103,12 @@ export default function StrategyPlanning() {
             </p>
           </div>
           <div className="mt-8 md:mt-0 relative z-10">
-            <a 
-              href="/contact" 
+            <Link 
+              to="/contact" 
               className="px-8 py-4 bg-gold text-midnight font-bold tracking-widest text-sm hover:bg-white transition-colors duration-300"
             >
               CONTACT US
-            </a>
+            </Link>
           </div>
         </motion.div>
       </div>

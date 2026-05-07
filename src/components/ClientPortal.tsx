@@ -1,7 +1,25 @@
 import { motion } from 'motion/react';
-import { Lock, FileText, PieChart, Shield } from 'lucide-react';
+import { Lock, FileText, PieChart, Shield, AlertCircle } from 'lucide-react';
+import React, { useState } from 'react';
 
 export default function ClientPortal() {
+  const [userId, setUserId] = useState('');
+  const [password, setPassword] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState('');
+
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setError('');
+
+    // Simulate an API call
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setError('승인되지 않은 사용자입니다. 관리자에게 문의해주시기 바랍니다.');
+    }, 1500);
+  };
+
   return (
     <section id="client-portal" className="py-24 md:py-32 bg-midnight text-white border-t border-white/10">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
@@ -58,11 +76,14 @@ export default function ClientPortal() {
             <h3 className="font-serif text-3xl text-midnight font-bold mb-2 text-center">Client Login</h3>
             <p className="text-gray-500 text-center text-sm mb-8">안전한 자산 관리를 위한 전용 포털입니다.</p>
             
-            <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+            <form className="space-y-6" onSubmit={handleLogin}>
               <div>
                 <label className="block text-midnight text-xs font-bold uppercase tracking-wider mb-2">Username / Email</label>
                 <input 
                   type="text" 
+                  value={userId}
+                  onChange={(e) => setUserId(e.target.value)}
+                  required
                   className="w-full border-b border-gray-300 py-2 focus:outline-none focus:border-gold transition-colors text-midnight bg-transparent"
                   placeholder="Enter your ID"
                 />
@@ -71,6 +92,9 @@ export default function ClientPortal() {
                 <label className="block text-midnight text-xs font-bold uppercase tracking-wider mb-2">Password</label>
                 <input 
                   type="password" 
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
                   className="w-full border-b border-gray-300 py-2 focus:outline-none focus:border-gold transition-colors text-midnight bg-transparent"
                   placeholder="Enter your password"
                 />
@@ -80,13 +104,33 @@ export default function ClientPortal() {
                   <input type="checkbox" className="accent-gold w-4 h-4" />
                   <span>Remember me</span>
                 </label>
-                <a href="#" className="text-gold hover:text-midnight transition-colors">Forgot Password?</a>
+                <button type="button" className="text-gold hover:text-midnight transition-colors">Forgot Password?</button>
               </div>
+
+              {error && (
+                <motion.div 
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="flex items-start space-x-2 text-red-600 bg-red-50 p-3 text-xs"
+                >
+                  <AlertCircle size={16} className="shrink-0 mt-0.5" />
+                  <span>{error}</span>
+                </motion.div>
+              )}
+
               <button 
                 type="submit" 
-                className="w-full bg-midnight text-white py-4 font-bold tracking-widest text-sm hover:bg-gold transition-colors duration-300 mt-4"
+                disabled={isSubmitting}
+                className="w-full bg-midnight text-white py-4 font-bold tracking-widest text-sm hover:bg-gold transition-colors duration-300 mt-4 disabled:opacity-50 disabled:cursor-not-allowed flex justify-center items-center"
               >
-                ACCESS SECURE PORTAL
+                {isSubmitting ? (
+                  <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                ) : (
+                  'ACCESS SECURE PORTAL'
+                )}
               </button>
             </form>
           </motion.div>

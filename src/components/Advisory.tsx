@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { Target, Search, BarChart4, ShieldCheck } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export default function Advisory() {
   const features = [
@@ -76,7 +77,6 @@ export default function Advisory() {
               </motion.div>
             ))}
           </div>
-
         </div>
       </div>
     </section>
