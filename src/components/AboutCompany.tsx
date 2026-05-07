@@ -153,7 +153,7 @@ export default function AboutCompany() {
                             <img 
                               src={signatureImage} 
                               alt="Signature" 
-                              className="h-16 object-contain -ml-2 opacity-80" 
+                              className="h-16 object-contain -ml-2 opacity-90" 
                             />
                           </div>
                         </div>
