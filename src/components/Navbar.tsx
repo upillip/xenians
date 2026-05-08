@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, User } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
-import logoImage from '../assets/images/logo.png';
-
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -46,7 +44,7 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
         <Link to="/" className="flex items-center space-x-2 z-50">
-          <img src={logoImage} alt="Logo" className="w-12 h-12 md:w-16 md:h-16 object-contain bg-white rounded-full p-1" />
+          <img src="/logo.png" alt="Logo" className="w-12 h-12 md:w-16 md:h-16 object-contain bg-white rounded-full p-1" />
           <span className="font-brand font-medium text-2xl md:text-3xl tracking-tight text-gold">XENIANS</span>
         </Link>
 

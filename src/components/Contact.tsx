@@ -1,7 +1,5 @@
 import { motion } from 'motion/react';
 import { Mail } from 'lucide-react';
-import logoImage from '../assets/images/logo.png';
-
 export default function Contact() {
   return (
     <section id="contact" className="py-24 md:py-32 bg-white relative overflow-hidden">
@@ -16,7 +14,7 @@ export default function Contact() {
             className="relative"
           >
             <div className="absolute -left-12 -top-12 w-64 h-64 opacity-5 blur-sm pointer-events-none select-none">
-              <img src={logoImage} alt="" className="w-full h-full object-contain" />
+              <img src="/logo.png" alt="" className="w-full h-full object-contain" />
             </div>
             <span className="text-gold uppercase tracking-widest text-sm font-semibold mb-4 block">
               Contact Us

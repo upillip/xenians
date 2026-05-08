@@ -1,4 +1,3 @@
-import logoImage from '../assets/images/logo.png';
 import { Link } from 'react-router-dom';
 
 export default function Footer() {
@@ -8,7 +7,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center space-x-3 mb-6">
-              <img src={logoImage} alt="Logo" className="w-10 h-10 object-contain bg-white rounded-full p-1" />
+              <img src="/logo.png" alt="Logo" className="w-10 h-10 object-contain bg-white rounded-full p-1" />
               <span className="font-brand font-medium text-3xl tracking-tight text-gold">XENIANS</span>
             </div>
             <p className="text-gray-400 text-sm max-w-sm leading-relaxed font-geometric">
