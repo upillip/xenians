@@ -5,5 +5,3 @@ User-agent: Yeti
 Allow: /
 
 Sitemap: https://www.xenians.co.kr/sitemap.xml
-
-
