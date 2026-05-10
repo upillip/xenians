@@ -50,7 +50,7 @@ export default function Advisory() {
             </h2>
             <div className="w-20 h-1 bg-gold mb-8"></div>
             <p className="text-gray-300 mb-8 leading-relaxed">
-              XENIANS는 시장의 흐름을 읽는 Adviser입니다. 딜 소싱(Deal Sourcing)부터 
+              XENIANS는 시장의 흐름을 읽는 Adviser입니다. 자문부문은 딜 소싱(Deal Sourcing)부터 
               종결(Closing)까지의 전 과정을 철저한 데이터 기반으로 분석합니다. 
               우리의 중립성과 전문적인 네트워크는 고객의 자본 구조를 최적화하고 
               성공적인 거래를 성사시키는 핵심 원동력입니다.

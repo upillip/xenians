@@ -39,7 +39,7 @@ export default function App() {
     <SiteProvider>
       <Router>
         <ScrollToTop />
-        <div className="min-h-screen bg-gray-50 selection:bg-gold/30 selection:text-midnight flex flex-col">
+        <div className="min-h-screen bg-white selection:bg-gold/30 selection:text-midnight flex flex-col">
           <Navbar />
           <main className="flex-grow pt-24 md:pt-0">
             <Routes>

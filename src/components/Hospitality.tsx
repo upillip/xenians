@@ -18,7 +18,7 @@ export default function Hospitality() {
     },
     {
       title: "Marketing & Strategy",
-      desc: "시장의 변화에 기민하게 대응하는 객실 단가(ADR) 전략과 타겟 마케팅을 실행합니다."
+      desc: "시장의 변화에 기민하게 대응하는 전략과 타겟 마케팅을 실행합니다."
     }
   ];
 
@@ -48,8 +48,7 @@ export default function Hospitality() {
             <div className="w-20 h-1 bg-gold mb-8"></div>
             <p className="text-gray-300 mb-8 leading-relaxed text-lg">
               XENIANS는 현장의 성공을 만드는 Operator입니다. <br className="hidden md:block" />
-              최고의 환대(Hospitality)는 철저하게 계산된 운영의 결과물입니다. 
-              우리의 위탁 운영 노하우는 호텔, 리조트, 골프클럽의 비용 최적화와 마케팅 전략을 통합하여 
+              운영부문 위탁 운영 노하우는 호텔, 리조트, 골프클럽의 비용 최적화와 마케팅 전략을 통합하여 
               해당 자산을 가장 가치 높은 자산으로 탈바꿈시킵니다.
             </p>
 

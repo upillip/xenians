@@ -18,24 +18,12 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { 
-      name: 'ABOUT', 
-      href: '/about',
-      subLinks: [
-        { name: 'Company Intro', href: '/about' },
-        { name: 'CEO Greeting', href: '/about#ceo-greeting' },
-        { name: 'Organization', href: '/about#organization' },
-      ]
-    },
-    { 
-      name: 'BUSINESS', 
-      href: '/advisory',
-      subLinks: [
-        { name: 'Advisory', href: '/advisory' },
-        { name: 'Strategy Planning', href: '/strategy' },
-        { name: 'Hospitality', href: '/hospitality' },
-      ]
-    },
+    { name: 'ABOUT', href: '/about' },
+    { name: 'BUSINESS', href: '/advisory', subLinks: [
+      { name: 'Advisory', href: '/advisory' },
+      { name: 'Strategy Planning', href: '/strategy' },
+      { name: 'Hospitality', href: '/hospitality' }
+    ]},
     { name: 'PORTFOLIO', href: '/portfolio' },
     { name: 'CLIENT PORTAL', href: '/client-portal' },
     { name: 'CONTACT / 문의하기', href: '/contact' },
@@ -43,12 +31,12 @@ export default function Navbar() {
 
   return (
     <header 
-      className={`fixed w-full top-0 z-50 transition-all duration-300 bg-midnight/90 backdrop-blur-md shadow-lg py-4 text-white`}
+      className={`fixed w-full top-0 z-50 transition-all duration-300 bg-midnight shadow-xl py-4 text-white`}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
         <Link to="/" className="flex items-center space-x-2 z-50">
           <img src="/logo.png" alt="Logo" className="w-12 h-12 md:w-16 md:h-16 object-contain bg-white rounded-full p-1" />
-          <span className="font-brand font-medium text-2xl md:text-3xl tracking-tight text-gold">
+          <span className="font-brand font-medium text-2xl md:text-3xl tracking-tight text-white">
             {data?.settings?.siteName || 'XENIANS'}
           </span>
         </Link>

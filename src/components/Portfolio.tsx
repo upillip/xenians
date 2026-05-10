@@ -22,7 +22,7 @@ export default function Portfolio() {
     : projects.filter(p => p.category === activeCategory);
 
   return (
-    <section id="portfolio" className="py-24 md:py-32 bg-gray-50 overflow-hidden">
+    <section id="portfolio" className="py-24 md:py-32 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
