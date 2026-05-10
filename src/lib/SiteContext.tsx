@@ -21,6 +21,7 @@ interface PortfolioItem {
 interface SiteData {
   portfolio: PortfolioItem[];
   settings: SiteSettings;
+  content: any; // Using any for flexibility with nested content
 }
 
 interface SiteContextType {

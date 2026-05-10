@@ -1,4 +1,5 @@
 import express from 'express';
+import { createServer as createViteServer } from 'vite';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import fs from 'fs/promises';
@@ -36,7 +37,6 @@ async function startServer() {
   app.use(express.static(path.join(__dirname, 'public')));
 
   if (process.env.NODE_ENV !== 'production') {
-    const { createServer: createViteServer } = await import('vite');
     const vite = await createViteServer({
       server: { middlewareMode: true },
       appType: 'spa',

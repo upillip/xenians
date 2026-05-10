@@ -23,8 +23,9 @@ interface SiteSettings {
 export default function AdminDashboard() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loginForm, setLoginForm] = useState({ id: '', password: '' });
-  const [data, setData] = useState<{ portfolio: Project[], settings: SiteSettings } | null>(null);
-  const [activeTab, setActiveTab] = useState<'portfolio' | 'settings'>('portfolio');
+  const [data, setData] = useState<{ portfolio: Project[], settings: SiteSettings, content: any } | null>(null);
+  const [activeTab, setActiveTab] = useState<'portfolio' | 'settings' | 'content'>('portfolio');
+  const [activeContentSection, setActiveContentSection] = useState<string>('hero');
   const [editingProject, setEditingProject] = useState<Project | null>(null);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
@@ -91,7 +92,7 @@ export default function AdminDashboard() {
       newPortfolio = [...data.portfolio, { ...editingProject, id: Date.now() }];
     }
     const newData = { ...data, portfolio: newPortfolio };
-    setData(newData);
+    saveToDb(newData);
     setEditingProject(null);
   };
 
@@ -99,7 +100,176 @@ export default function AdminDashboard() {
     if (!data) return;
     if (!confirm('정말 삭제하시겠습니까?')) return;
     const newData = { ...data, portfolio: data.portfolio.filter(p => p.id !== id) };
-    setData(newData);
+    saveToDb(newData);
+  };
+
+  const renderContentEditors = (section: string, sectionData: any, onChange: (key: string, value: any) => void) => {
+    if (!sectionData) return null;
+
+    const handleFieldChange = (field: string, value: string) => {
+      onChange(field, { ...sectionData, [field]: value });
+    };
+
+    const handleNestedFieldChange = (parent: string, subField: string, value: string) => {
+      onChange(parent, { ...sectionData, [parent]: { ...sectionData[parent], [subField]: value } });
+    };
+
+    const handleArrayFieldChange = (arrayField: string, index: number, subField: string, value: string) => {
+      const newArray = [...sectionData[arrayField]];
+      newArray[index] = { ...newArray[index], [subField]: value };
+      onChange(arrayField, { ...sectionData, [arrayField]: newArray });
+    };
+
+    // Special handling for nested or array structures
+    if (section === 'about') {
+      return (
+        <div className="space-y-10">
+          {['ko', 'en'].map(lang => (
+            <div key={lang} className="p-6 bg-gray-50 border border-gray-100 rounded-sm">
+              <h4 className="text-xs font-bold text-gold uppercase tracking-[0.2em] mb-6">{lang === 'ko' ? 'Korean Text' : 'English Text'}</h4>
+              <div className="space-y-6">
+                {Object.keys(sectionData[lang]).map(key => (
+                  <div key={key}>
+                    <label className="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">{key}</label>
+                    <textarea 
+                      value={sectionData[lang][key]}
+                      onChange={(e) => handleNestedFieldChange(lang, key, e.target.value)}
+                      className="w-full bg-white border border-gray-200 p-4 focus:outline-none focus:border-gold transition-colors text-sm leading-relaxed"
+                      rows={sectionData[lang][key].length > 50 ? 4 : 1}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+          {sectionData.orgData && (
+            <div className="space-y-6">
+              <h4 className="text-xs font-bold text-gold uppercase tracking-[0.2em]">Organization Structure</h4>
+              {sectionData.orgData.map((dept: any, deptIdx: number) => (
+                <div key={deptIdx} className="p-6 border border-gray-200 rounded-sm space-y-4">
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">Title</label>
+                      <input 
+                        type="text" 
+                        value={dept.title}
+                        onChange={(e) => {
+                          const newOrg = [...sectionData.orgData];
+                          newOrg[deptIdx] = { ...newOrg[deptIdx], title: e.target.value };
+                          onChange('orgData', { ...sectionData, orgData: newOrg });
+                        }}
+                        className="w-full bg-gray-50 border border-gray-200 p-3 text-sm focus:outline-none focus:border-gold"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">Subtitle</label>
+                      <input 
+                        type="text" 
+                        value={dept.subtitle}
+                        onChange={(e) => {
+                          const newOrg = [...sectionData.orgData];
+                          newOrg[deptIdx] = { ...newOrg[deptIdx], subtitle: e.target.value };
+                          onChange('orgData', { ...sectionData, orgData: newOrg });
+                        }}
+                        className="w-full bg-gray-50 border border-gray-200 p-3 text-sm focus:outline-none focus:border-gold"
+                      />
+                    </div>
+                  </div>
+                  <div className="space-y-4 pt-4">
+                    {dept.teams.map((team: any, teamIdx: number) => (
+                      <div key={teamIdx} className="bg-gray-50 p-4 border border-gray-200 space-y-3">
+                        <label className="block text-[10px] font-bold text-gray-400 uppercase tracking-widest">Team {teamIdx + 1}</label>
+                        <input 
+                          type="text" 
+                          value={team.name}
+                          onChange={(e) => {
+                            const newOrg = [...sectionData.orgData];
+                            const newTeams = [...newOrg[deptIdx].teams];
+                            newTeams[teamIdx] = { ...newTeams[teamIdx], name: e.target.value };
+                            newOrg[deptIdx] = { ...newOrg[deptIdx], teams: newTeams };
+                            onChange('orgData', { ...sectionData, orgData: newOrg });
+                          }}
+                          className="w-full bg-white border border-gray-200 p-2 text-sm focus:outline-none focus:border-gold"
+                        />
+                        <div className="grid grid-cols-2 gap-4">
+                          <textarea 
+                            value={team.enDesc}
+                            onChange={(e) => {
+                              const newOrg = [...sectionData.orgData];
+                              const newTeams = [...newOrg[deptIdx].teams];
+                              newTeams[teamIdx] = { ...newTeams[teamIdx], enDesc: e.target.value };
+                              newOrg[deptIdx] = { ...newOrg[deptIdx], teams: newTeams };
+                              onChange('orgData', { ...sectionData, orgData: newOrg });
+                            }}
+                            placeholder="English Description"
+                            className="w-full bg-white border border-gray-200 p-2 text-[10px] focus:outline-none focus:border-gold"
+                            rows={2}
+                          />
+                          <textarea 
+                            value={team.koDesc}
+                            onChange={(e) => {
+                              const newOrg = [...sectionData.orgData];
+                              const newTeams = [...newOrg[deptIdx].teams];
+                              newTeams[teamIdx] = { ...newTeams[teamIdx], koDesc: e.target.value };
+                              newOrg[deptIdx] = { ...newOrg[deptIdx], teams: newTeams };
+                              onChange('orgData', { ...sectionData, orgData: newOrg });
+                            }}
+                            placeholder="Korean Description"
+                            className="w-full bg-white border border-gray-200 p-2 text-xs focus:outline-none focus:border-gold"
+                            rows={2}
+                          />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    return (
+      <div className="space-y-6">
+        {Object.keys(sectionData).map(key => {
+          if (Array.isArray(sectionData[key])) {
+            return (
+              <div key={key} className="space-y-4">
+                <label className="block text-xs font-bold text-gold uppercase tracking-widest mb-3">{key}</label>
+                {sectionData[key].map((item: any, idx: number) => (
+                  <div key={idx} className="p-4 bg-gray-50 border border-gray-200 space-y-4">
+                    {Object.keys(item).map(subKey => (
+                      <div key={subKey}>
+                        <label className="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">{subKey}</label>
+                        <textarea 
+                          value={item[subKey]}
+                          onChange={(e) => handleArrayFieldChange(key, idx, subKey, e.target.value)}
+                          className="w-full bg-white border border-gray-200 p-3 text-xs focus:outline-none focus:border-gold"
+                          rows={item[subKey].length > 40 ? 3 : 1}
+                        />
+                      </div>
+                    ))}
+                  </div>
+                ))}
+              </div>
+            );
+          }
+
+          return (
+            <div key={key}>
+              <label className="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">{key}</label>
+              <textarea 
+                value={sectionData[key]}
+                onChange={(e) => handleFieldChange(key, e.target.value)}
+                className="w-full bg-gray-50 border border-gray-200 p-4 focus:outline-none focus:border-gold transition-colors font-medium text-midnight text-sm"
+                rows={sectionData[key].length > 60 ? 4 : 1}
+              />
+            </div>
+          );
+        })}
+      </div>
+    );
   };
 
   if (!isLoggedIn) {
@@ -200,6 +370,13 @@ export default function AdminDashboard() {
           >
             <span className="flex items-center gap-2"><SettingsIcon size={14} /> Site Settings</span>
             {activeTab === 'settings' && <motion.div layoutId="tab" className="absolute bottom-0 left-0 w-full h-1 bg-gold" />}
+          </button>
+          <button 
+            onClick={() => setActiveTab('content')}
+            className={`pb-4 px-4 font-bold tracking-widest uppercase text-xs transition-colors relative ${activeTab === 'content' ? 'text-gold' : 'text-gray-400'}`}
+          >
+            <span className="flex items-center gap-2"><Type size={14} /> Site Content</span>
+            {activeTab === 'content' && <motion.div layoutId="tab" className="absolute bottom-0 left-0 w-full h-1 bg-gold" />}
           </button>
         </div>
 
@@ -316,6 +493,58 @@ export default function AdminDashboard() {
                       </select>
                     </div>
                   </div>
+                </div>
+              </div>
+
+              <div className="mt-12 pt-8 border-t border-gray-100 flex justify-end">
+                <button 
+                  onClick={() => saveToDb(data)}
+                  disabled={saving}
+                  className="flex items-center gap-2 bg-gold text-midnight px-10 py-4 font-bold tracking-widest uppercase text-sm hover:bg-midnight hover:text-gold transition-colors shadow-lg disabled:opacity-50"
+                >
+                  <Save size={18} />
+                  {saving ? 'Saving Settings...' : 'Save Settings'}
+                </button>
+              </div>
+            </div>
+          )}
+
+          {activeTab === 'content' && data && (
+            <div className="bg-white border border-gray-200 shadow-sm overflow-hidden flex flex-col md:flex-row min-h-[600px]">
+              <div className="w-full md:w-64 bg-gray-50 border-r border-gray-200 p-6 space-y-2">
+                <h3 className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-6">Sections</h3>
+                {Object.keys(data.content).map(section => (
+                  <button
+                    key={section}
+                    onClick={() => setActiveContentSection(section)}
+                    className={`w-full text-left px-4 py-3 text-sm font-bold uppercase tracking-wider rounded-sm transition-colors ${activeContentSection === section ? 'bg-midnight text-gold' : 'text-gray-500 hover:bg-gray-100 hover:text-midnight'}`}
+                  >
+                    {section}
+                  </button>
+                ))}
+              </div>
+              <div className="flex-1 p-8 md:p-12 overflow-y-auto no-scrollbar max-h-[700px]">
+                <div className="mb-8 flex justify-between items-end">
+                  <div>
+                    <h3 className="font-serif text-2xl font-bold text-midnight border-l-4 border-gold pl-4 capitalize">{activeContentSection} Content</h3>
+                    <p className="text-xs text-gray-400 mt-2 uppercase tracking-widest">Manage primary text for this section</p>
+                  </div>
+                  <button 
+                    onClick={() => saveToDb(data)}
+                    disabled={saving}
+                    className="bg-gold text-midnight px-6 py-2 text-[10px] font-bold uppercase tracking-widest hover:bg-midnight hover:text-gold transition-all disabled:opacity-50 flex items-center gap-2"
+                  >
+                    <Save size={14} />
+                    {saving ? 'Saving...' : 'Save Section'}
+                  </button>
+                </div>
+                
+                <div className="space-y-8">
+                  {renderContentEditors(activeContentSection, data.content[activeContentSection], (key, value) => {
+                    const newContent = { ...data.content };
+                    newContent[activeContentSection] = value;
+                    setData({ ...data, content: newContent });
+                  })}
                 </div>
               </div>
             </div>

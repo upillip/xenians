@@ -1,8 +1,17 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { Mail } from 'lucide-react';
+import { useSite } from '../lib/SiteContext';
 
 export default function Contact() {
+  const { data } = useSite();
+  const c = data?.content?.contact || {
+    tagline: "Contact Us | 문의하기",
+    title: "Ready to redefine your asset's value?",
+    subtitle: "자산 가치의 새로운 정의를 위해",
+    description: "최고의 전략과 압도적인 실행력을 경험하고 싶으시다면, 전문 상담을 신청해 주십시오."
+  };
+
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -119,15 +128,14 @@ export default function Contact() {
               <img src="/logo.png" alt="" className="w-full h-full object-contain" />
             </div>
             <span className="text-gold uppercase tracking-widest text-sm font-semibold mb-4 block">
-              Contact Us | 문의하기
+              {c.tagline}
             </span>
             <h2 className="font-serif text-4xl md:text-5xl text-midnight font-bold mb-6">
-              Ready to redefine <br /> your asset's value?
-              <span className="block text-2xl md:text-3xl mt-4 font-sans text-gray-400 font-medium tracking-tight">자산 가치의 새로운 정의를 위해</span>
+              {c.title}
+              <span className="block text-2xl md:text-3xl mt-4 font-sans text-gray-400 font-medium tracking-tight">{c.subtitle}</span>
             </h2>
             <p className="text-gray-600 mb-12 text-lg">
-              최고의 전략과 압도적인 실행력을 경험하고 싶으시다면, <br className="hidden md:block" />
-              전문 상담을 신청해 주십시오. 
+              {c.description}
             </p>
           </motion.div>
 

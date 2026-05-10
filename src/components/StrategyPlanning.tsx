@@ -1,28 +1,20 @@
 import { motion } from 'motion/react';
 import { Shield, TrendingUp, Construction } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useSite } from '../lib/SiteContext';
 
 export default function StrategyPlanning() {
-  const highlights = [
-    {
-      icon: <Shield className="w-10 h-10 text-gold" />,
-      title: "Project Management (PMI)",
-      desc: "Post-Merger Integration management, business risk control, and process optimization to ensure seamless transitions and operational stability.",
-      koDesc: "통합(PMI) 관리, 사업 리스크 통제 및 프로세스 최적화를 통한 안정적인 사업 운영 지원."
-    },
-    {
-      icon: <TrendingUp className="w-10 h-10 text-gold" />,
-      title: "Strategic Planning",
-      desc: "Developing mid-to-long-term growth strategies and conducting in-depth asset portfolio analysis to maximize sustainable value.",
-      koDesc: "중장기 성장 전략 수립 및 자산 포트폴리오 분석을 통한 지속 가능한 가치 창출."
-    },
-    {
-      icon: <Construction className="w-10 h-10 text-gold" />,
-      title: "Construction PM & PF",
-      desc: "Full-cycle construction management from planning to operation, combined with sophisticated Project Financing (PF) advisory services.",
-      koDesc: "건설사업 전 과정(계획~운영) 총괄 관리 및 PF(Project Financing) 자문 서비스 제공."
-    }
-  ];
+  const { data } = useSite();
+  const c = data?.content?.strategy || {
+    tagline: "Management Division",
+    title: "Strategy Planning & Risk Control",
+    description: "XENIANS는 기업의 지속 가능한 성장을 위한 정교한 전략 수립과 철저한 리스크 관리를 수행합니다. 인수 후 통합(PMI)부터 건설 기술 지원 및 금융 자문까지, 사업의 전 과정을 아우르는 관리 체계를 구축합니다.",
+    highlightsTitle: "Value Maximization through Execution",
+    highlightsDesc: "단순한 계획을 넘어 현장 중심의 리스크 통제와 프로세스 혁신을 통해 실질적인 성과를 도출합니다. XENIANS는 고객사의 자산이 가진 잠재력을 현실의 가치로 전환하는 최상의 관리 파트너입니다.",
+    highlights: []
+  };
+
+  const icons = [<Shield className="w-10 h-10 text-gold" />, <TrendingUp className="w-10 h-10 text-gold" />, <Construction className="w-10 h-10 text-gold" />];
 
   return (
     <section id="strategy-planning" className="py-24 md:py-32 bg-midnight text-white relative overflow-hidden">
@@ -38,7 +30,7 @@ export default function StrategyPlanning() {
             viewport={{ once: true }}
             className="text-gold-light font-sans uppercase tracking-widest text-sm mb-4"
           >
-            Management Division
+            {c.tagline}
           </motion.p>
           <motion.h2
             initial={{ opacity: 0, y: 10 }}
@@ -47,8 +39,7 @@ export default function StrategyPlanning() {
             transition={{ delay: 0.1 }}
             className="text-3xl md:text-5xl font-serif font-medium leading-tight mb-8"
           >
-            Strategy Planning <br />
-            <span className="text-gray-400">& Risk Control</span>
+            {c.title}
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 10 }}
@@ -57,13 +48,12 @@ export default function StrategyPlanning() {
             transition={{ delay: 0.2 }}
             className="text-xl text-gray-300 font-sans leading-relaxed"
           >
-            XENIANS의 관리부문은 기업의 지속 가능한 성장을 위한 정교한 전략 수립과 철저한 리스크 관리를 수행합니다.
-            인수 후 통합(PMI)부터 건설 기술 지원 및 금융 자문까지, 사업의 전 과정을 아우르는 관리 체계를 구축합니다.
+            {c.description}
           </motion.p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-12">
-          {highlights.map((item, index) => (
+          {c.highlights.map((item: any, index: number) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
@@ -72,7 +62,7 @@ export default function StrategyPlanning() {
               transition={{ delay: 0.1 * index }}
               className="p-8 border border-white/10 bg-white/5 hover:bg-white/10 transition-all duration-500 rounded-sm"
             >
-              <div className="mb-8">{item.icon}</div>
+              <div className="mb-8">{icons[index % icons.length]}</div>
               <h3 className="text-xl font-serif text-white mb-4 font-medium">{item.title}</h3>
               <div className="space-y-4">
                 <p className="text-sm text-gray-400 font-sans leading-relaxed">
@@ -96,10 +86,9 @@ export default function StrategyPlanning() {
         >
           <div className="absolute top-0 right-0 w-64 h-64 bg-gold/10 rounded-full blur-3xl -mr-32 -mt-32"></div>
           <div className="relative z-10 max-w-2xl">
-            <h3 className="text-2xl font-serif text-gold mb-4">Value Maximization through Execution</h3>
+            <h3 className="text-2xl font-serif text-gold mb-4">{c.highlightsTitle}</h3>
             <p className="text-gray-300 font-sans">
-              단순한 계획을 넘어 현장 중심의 리스크 통제와 프로세스 혁신을 통해 실질적인 성과를 도출합니다. 
-              XENIANS는 고객사의 자산이 가진 잠재력을 현실의 가치로 전환하는 최상의 관리 파트너입니다.
+              {c.highlightsDesc}
             </p>
           </div>
           <div className="mt-8 md:mt-0 relative z-10">

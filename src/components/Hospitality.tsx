@@ -1,26 +1,30 @@
 import { motion } from 'motion/react';
 import { Key, Users, TrendingUp, Building } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useSite } from '../lib/SiteContext';
 
 export default function Hospitality() {
-  const points = [
-    {
-      title: "Operation & Management",
-      desc: "체계적인 위탁 운영 모델로 호텔, 리조트, 골프클럽의 일상적 운영부터 전략적 결정까지 책임집니다."
-    },
-    {
-      title: "Asset Management",
-      desc: "단순 관리를 넘어 자산의 수익률(Yield)을 최우선으로 고려하는 밸류애드(Value-Add) 전략."
-    },
-    {
-      title: "Cost Optimization",
-      desc: "데이터 기반의 비용 통제 시스템과 효율적인 인력 관리로 영업이익(GOP)을 극대화합니다."
-    },
-    {
-      title: "Marketing & Strategy",
-      desc: "시장의 변화에 기민하게 대응하는 전략과 타겟 마케팅을 실행합니다."
-    }
-  ];
+  const { data } = useSite();
+  const c = data?.content?.hospitality || {
+    tagline: "Hospitality",
+    title: "Turning Hospitality Into High-Yield Assets.",
+    titleItalic: "High-Yield Assets.",
+    description: "XENIANS는 현장의 성공을 만드는 Operator입니다. 최고의 환대(Hospitality)는 철저하게 계산된 운영의 결과물입니다. 우리의 위탁 운영 노하우는 호텔, 리조트, 골프클럽의 비용 최적화와 마케팅 전략을 통합하여 해당 자산을 가장 가치 높은 자산으로 탈바꿈시킵니다.",
+    points: []
+  };
+
+  const renderTitle = () => {
+    if (!c.titleItalic) return c.title;
+    const parts = c.title.split(c.titleItalic);
+    if (parts.length !== 2) return c.title;
+    return (
+      <>
+        {parts[0]}
+        <span className="text-gold italic font-normal">{c.titleItalic}</span>
+        {parts[1]}
+      </>
+    );
+  };
 
   return (
     <section id="hospitality" className="py-24 md:py-32 bg-midnight text-white relative overflow-hidden">
@@ -40,20 +44,18 @@ export default function Hospitality() {
             className="lg:py-12"
           >
             <span className="text-gold-light uppercase tracking-widest text-sm font-semibold mb-4 block">
-              Hospitality
+              {c.tagline}
             </span>
             <h2 className="font-serif text-4xl md:text-5xl font-bold mb-6 leading-tight">
-              Turning Hospitality <br /> Into <span className="text-gold italic font-normal">High-Yield Assets.</span>
+              {renderTitle()}
             </h2>
             <div className="w-20 h-1 bg-gold mb-8"></div>
-            <p className="text-gray-300 mb-8 leading-relaxed text-lg">
-              XENIANS는 현장의 성공을 만드는 Operator입니다. <br className="hidden md:block" />
-              운영부문 위탁 운영 노하우는 호텔, 리조트, 골프클럽의 비용 최적화와 마케팅 전략을 통합하여 
-              해당 자산을 가장 가치 높은 자산으로 탈바꿈시킵니다.
+            <p className="text-gray-300 mb-8 leading-relaxed text-lg whitespace-pre-line">
+              {c.description}
             </p>
 
             <ul className="space-y-6">
-              {points.map((point, idx) => (
+              {c.points.map((point: any, idx: number) => (
                 <motion.li 
                   key={idx}
                   initial={{ opacity: 0, x: -20 }}

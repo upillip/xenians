@@ -1,32 +1,17 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0">
   <channel>
-    <title>(주)제니안스 XENIANS.corp</title>
-    <link>https://www.xenians.co.kr/</link>
-    <description>자산 가치를 넘어 미래를 설계하는 기업 - M&amp;A, PM, PF, Advisory, Hospitality</description>
+    <title>XENIANS</title>
+    <link>https://www.xenians.co.kr</link>
+    <description>XENIANS - M&amp;A Advisory, Hospitality PM &amp; PF</description>
     <language>ko-kr</language>
-    <pubDate>Fri, 08 May 2026 14:33:00 +0000</pubDate>
     <lastBuildDate>Fri, 08 May 2026 14:33:00 +0000</lastBuildDate>
-    <item>
-      <title>(주)제니안스 홈</title>
-      <link>https://www.xenians.co.kr/</link>
-      <description>제니안스 M&amp;A Advisory &amp; Hotel Asset Management</description>
-      <pubDate>Fri, 08 May 2026 14:33:00 +0000</pubDate>
-      <guid>https://www.xenians.co.kr/</guid>
-    </item>
     <item>
       <title>About XENIANS</title>
       <link>https://www.xenians.co.kr/#/about</link>
-      <description>M&A Advisory Hospitality PM PF</description>
+      <description>회사 소개 및 비전</description>
       <pubDate>Fri, 08 May 2026 14:33:00 +0000</pubDate>
       <guid>https://www.xenians.co.kr/#/about</guid>
-    </item>
-    <item>
-      <title>M&amp;A Advisory</title>
-      <link>https://www.xenians.co.kr/#/advisory</link>
-      <description>기업 인수 합병 자문 및 서비스</description>
-      <pubDate>Fri, 08 May 2026 14:33:00 +0000</pubDate>
-      <guid>https://www.xenians.co.kr/#/advisory</guid>
     </item>
   </channel>
 </rss>
