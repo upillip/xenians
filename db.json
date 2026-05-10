@@ -1,0 +1,83 @@
+{
+  "portfolio": [
+    {
+      "id": 1,
+      "category": "M&A",
+      "title": "Cross-border Logistics M&A Advisory",
+      "desc": {
+        "en": "Strategic buy-side advisory for a leading global logistics player expanding into Vietnam/Thailand markets. Facilitated full-cycle deal execution including market entry strategy and valuation.",
+        "ko": "글로벌 물류 선도 기업의 베트남/태국 시장 진출을 위한 인수 자문. 진출 전략 수립부터 딜 실행, 가치평가(Valuation)까지 전 과정을 성공적으로 수행."
+      },
+      "client": "Global Logistics Group",
+      "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop",
+      "year": "2025"
+    },
+    {
+      "id": 2,
+      "category": "Hospitality",
+      "title": "Resort Turnaround",
+      "desc": {
+        "en": "Interim management and operational restructuring for a distressed five-star resort. Achieved 25% increase in GOP within 18 months through service QC and yield management.",
+        "ko": "5성급 리조트의 위탁 경영 및 운영 재구조화. 서비스 품질 관리 및 수익률 향상 전략을 통해 18개월 내 영업이익 25% 상승 달성."
+      },
+      "client": "Private Equity Real Estate Fund",
+      "image": "https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=2070&auto=format&fit=crop",
+      "year": "2024"
+    },
+    {
+      "id": 3,
+      "category": "PM/PF",
+      "title": "Port Waterfront PF",
+      "desc": {
+        "en": "Project finance advisory and capital raising for a $500M mixed-use waterfront redevelopment project, coordinating with major institutional investors and banks.",
+        "ko": "5,000억 원 규모의 복합 개발 사업을 위한 PF 자문 및 자금 조달. 주요 기관 투자자 및 금융권과의 전략적 조율 수행."
+      },
+      "client": "Urban Development Corp",
+      "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop",
+      "year": "2024"
+    },
+    {
+      "id": 4,
+      "category": "Advisory",
+      "title": "Fintech Unicorn Strategic Restructuring",
+      "desc": {
+        "en": "Organizational design and mid-to-long term exit strategy planning for a premier fintech unicorn. Optimized corporate structure for future IPO requirements.",
+        "ko": "선도적인 핀테크 유니콘 기업의 조직 설계 및 중장기 엑시트(Exit) 전략 기획. 향후 상장(IPO) 요건에 적합한 기업 구조 최적화 및 거버넌스 구축."
+      },
+      "client": "Leading Fintech Firm",
+      "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2070&auto=format&fit=crop",
+      "year": "2025"
+    },
+    {
+      "id": 5,
+      "category": "Hospitality",
+      "title": "Imperial Green Golf & Country Club",
+      "desc": {
+        "en": "Full-cycle operational consulting from pre-opening to steady-state operations. Implemented a data-driven membership management system and premium branding.",
+        "ko": "프리미엄 골프 클럽의 개장 전 준비부터 운영 안정화까지 전 과정 컨설팅. 데이터 기반의 멤버십 관리 시스템 및 최상위 브랜드 정체성 구축."
+      },
+      "client": "Real Estate Asset Manager",
+      "image": "https://images.unsplash.com/photo-1535131749006-b7f58c99034b?q=80&w=2070&auto=format&fit=crop",
+      "year": "2023"
+    },
+    {
+      "id": 6,
+      "category": "PM/PF",
+      "title": "Seoul CBD Landmark Office Renovation",
+      "desc": {
+        "en": "Project management for the value-add renovation of a landmark office tower in Seoul CBD. Managed technical audits, vendor selection, and construction scheduling.",
+        "ko": "서울 중심업무지구(CBD) 랜드마크 오피스 타워의 가치 증대(Value-add) 리노베이션 PM. 기술 실사, 업체 선정 및 공정 관리 전반 총괄."
+      },
+      "client": "Asset Management Company",
+      "image": "https://images.unsplash.com/photo-1570126618953-d437176e8c79?q=80&w=2058&auto=format&fit=crop",
+      "year": "2023"
+    }
+  ],
+  "settings": {
+    "siteName": "XENIANS",
+    "primaryColor": "#b89769",
+    "secondaryColor": "#0a0d12",
+    "fontSans": "Inter",
+    "fontSerif": "Playfair Display"
+  }
+}

@@ -2,13 +2,36 @@ import express from 'express';
 import { createServer as createViteServer } from 'vite';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import fs from 'fs/promises';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+const DB_PATH = path.join(__dirname, 'db.json');
 
 async function startServer() {
   const app = express();
   const PORT = 3000;
+
+  app.use(express.json());
+
+  // API Routes
+  app.get('/api/db', async (req, res) => {
+    try {
+      const data = await fs.readFile(DB_PATH, 'utf-8');
+      res.json(JSON.parse(data));
+    } catch (error) {
+      res.status(500).json({ error: 'Failed to read database' });
+    }
+  });
+
+  app.post('/api/db', async (req, res) => {
+    try {
+      await fs.writeFile(DB_PATH, JSON.stringify(req.body, null, 2));
+      res.json({ success: true });
+    } catch (error) {
+      res.status(500).json({ error: 'Failed to update database' });
+    }
+  });
 
   // Serve static files from public directory explicitly
   app.use(express.static(path.join(__dirname, 'public')));

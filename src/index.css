@@ -2,15 +2,15 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Montserrat", "Noto Sans KR", ui-sans-serif, system-ui, sans-serif;
-  --font-serif: "Playfair Display", "Noto Serif KR", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-sans: var(--font-sans, "Montserrat"), "Noto Sans KR", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-serif, "Playfair Display"), "Noto Serif KR", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
   --font-geometric: "Space Grotesk", sans-serif;
   --font-brand: "Outfit", sans-serif;
   --font-handwriting: "Nanum Brush Script", cursive;
 
-  --color-midnight: #0B1120;
+  --color-midnight: var(--color-midnight, #0B1120);
   --color-midnight-light: #162032;
-  --color-gold: #C5A059;
+  --color-gold: var(--color-gold, #C5A059);
   --color-gold-light: #D4B67A;
   --color-taupe: #8B8579;
 }
